@@ -1,0 +1,10 @@
+import random
+def f(x):
+    return x*x
+wolves = [random.randint(-10,10) for _ in range(5)]
+for _ in range(10):
+    wolves.sort(key=f)
+    alpha, beta, delta = wolves[0], wolves[1], wolves[2]
+    for i in range(5):
+        wolves[i] = (alpha + beta + delta) // 3
+print("Best:", wolves[0])
