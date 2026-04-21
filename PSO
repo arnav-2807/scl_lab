@@ -1,0 +1,15 @@
+import random
+def f(x):
+    return x*x
+pos = [random.randint(-10, 10) for _ in range(5)]
+vel = [0]*5
+pbest = pos[:]
+gbest = min(pos, key=f)
+for _ in range(10):
+    for i in range(5):
+        vel[i] = vel[i] + (pbest[i]-pos[i]) + (gbest-pos[i])
+        pos[i] += vel[i]
+        if f(pos[i]) < f(pbest[i]):
+            pbest[i] = pos[i]
+    gbest = min(pbest, key=f)
+print("Best:", gbest)
