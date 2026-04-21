@@ -1,0 +1,10 @@
+import random
+def f(x):
+    return x*x
+flies = [random.randint(-10,10) for _ in range(5)]
+for _ in range(10):
+    for i in range(5):
+        for j in range(5):
+            if f(flies[j]) < f(flies[i]):
+                flies[i] += (flies[j] - flies[i]) // 2
+print("Best:", min(flies, key=f))
