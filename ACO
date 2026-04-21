@@ -1,0 +1,16 @@
+dist = [[0,2,3],[2,0,4],[3,4,0]]
+pher = [[1,1,1],[1,1,1],[1,1,1]]
+path = [0]
+while len(path) < 3:
+    cur = path[-1]
+    best = -1
+    next_node = -1
+    for j in range(3):
+        if j not in path:
+            val = pher[cur][j] / dist[cur][j]
+            if val > best:
+                best = val
+                next_node = j
+    path.append(next_node)
+    pher[cur][next_node] += 1
+print("Path:", path)
