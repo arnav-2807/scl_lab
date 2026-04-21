@@ -1,0 +1,11 @@
+import random
+def f(x):
+    return x*x
+food = [random.randint(-10,10) for _ in range(5)]
+for _ in range(10):
+    for i in range(5):
+        k = random.randint(0,4)
+        new = food[i] + (food[i] - food[k]) // 2
+        if f(new) < f(food[i]):
+            food[i] = new
+print("Best:", min(food, key=f))
