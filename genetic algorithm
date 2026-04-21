@@ -1,0 +1,13 @@
+import random
+def fitness(x):
+    return x*x
+pop = [random.randint(-10, 10) for _ in range(6)]
+for _ in range(10):
+    pop = sorted(pop, key=fitness)
+    new_pop = pop[:3]
+    while len(new_pop) < 6:
+        p1, p2 = random.sample(pop[:3], 2)
+        child = (p1 + p2) // 2
+        new_pop.append(child)
+    pop = new_pop
+print("Best:", pop[0])
